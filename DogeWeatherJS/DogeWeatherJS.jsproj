@@ -49,17 +49,51 @@
     <RequiredPlatformVersion>8.1</RequiredPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>DogeWeatherJS_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>DogeWeatherJS_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>20632ACDBCD4FF36EF58060C7571BC3DCE620F74</PackageCertificateThumbprint>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="DogeWeatherJS_StoreKey.pfx" />
+    <Content Include="settings_privacy.html" />
+    <Content Include="about.css" />
+    <Content Include="settings_about.html" />
+    <Content Include="about.js" />
     <Content Include="default.html" />
+    <Content Include="images\badge.scale-100.png" />
+    <Content Include="images\badge.scale-140.png" />
+    <Content Include="images\badge.scale-180.png" />
     <Content Include="images\logo.scale-100.png" />
+    <Content Include="images\logo.scale-140.png" />
+    <Content Include="images\logo.scale-180.png" />
+    <Content Include="images\logo.scale-80.png" />
+    <Content Include="images\logosmaller.scale-100.png" />
+    <Content Include="images\logosmaller.scale-140.png" />
+    <Content Include="images\logosmaller.scale-180.png" />
+    <Content Include="images\logosmaller.scale-80.png" />
     <Content Include="images\smalllogo.scale-100.png" />
+    <Content Include="images\smalllogo.scale-140.png" />
+    <Content Include="images\smalllogo.scale-180.png" />
+    <Content Include="images\smalllogo.scale-80.png" />
     <Content Include="images\splashscreen.scale-100.png" />
+    <Content Include="images\splashscreen.scale-140.png" />
+    <Content Include="images\splashscreen.scale-180.png" />
+    <Content Include="images\square.scale-100.png" />
+    <Content Include="images\square.scale-140.png" />
+    <Content Include="images\square.scale-180.png" />
+    <Content Include="images\square.scale-80.png" />
     <Content Include="images\storelogo.scale-100.png" />
+    <Content Include="images\storelogo.scale-140.png" />
+    <Content Include="images\storelogo.scale-180.png" />
+    <Content Include="images\wide.scale-100.png" />
+    <Content Include="images\wide.scale-140.png" />
+    <Content Include="images\wide.scale-180.png" />
+    <Content Include="images\wide.scale-80.png" />
     <Content Include="img\doge-geo.png" />
     <Content Include="img\doge\01d.png" />
     <Content Include="img\doge\01n.png" />
@@ -69,6 +103,8 @@
     <Content Include="img\doge\03n.png" />
     <Content Include="img\doge\04d.png" />
     <Content Include="img\doge\04n.scale-100.png" />
+    <Content Include="img\doge\04n.scale-140.png" />
+    <Content Include="img\doge\04n.scale-180.png" />
     <Content Include="img\doge\09d %281%29.png" />
     <Content Include="img\doge\09d.png" />
     <Content Include="img\doge\09n.png" />

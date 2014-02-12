@@ -36,8 +36,9 @@
                 text-align: center;
             }
             #weather-desc {
-                font-size: 30px;
+                font-size: 36px;
                 color:#33D6FF;
+                font-weight:500;
 				text-transform: lowercase;
             }
             #identifiers {
@@ -45,9 +46,13 @@
             }
             #location {
                 color: #ff3399;
+                font-size:22px;
+                text-transform: lowercase;
             }
             .t {
                 color: #30FFD6;
+                font-size:20px;
+                font-weight:500;
                 display: inline-block;
             }
             .suchlikes {

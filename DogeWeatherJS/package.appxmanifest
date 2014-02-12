@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="f9962804-4ab7-4d9d-9a08-9b303ba2b251" Version="1.0.0.0" Publisher="CN=Christian" />
+  <Identity Name="10220SilverFlameApps.Pip-BoyRadio" Version="1.1.0.0" Publisher="CN=5E6BED2A-A2C2-4633-BD8F-FE32CEDC02AC" />
   <Properties>
-    <DisplayName>DogeWeatherJS</DisplayName>
-    <PublisherDisplayName>Christian</PublisherDisplayName>
+    <DisplayName>Pip-Boy Radio</DisplayName>
+    <PublisherDisplayName>SilverFlame Apps</PublisherDisplayName>
     <Logo>images\storelogo.png</Logo>
   </Properties>
   <Prerequisites>
@@ -15,8 +15,15 @@
   </Resources>
   <Applications>
     <Application Id="App" StartPage="default.html">
-      <m2:VisualElements DisplayName="doge weather" Description="doge weather is your go to guide for your local weather report, considering you are too lazy to look out a window!" ForegroundText="light" BackgroundColor="#464646" Square150x150Logo="images\Logo.png" Square30x30Logo="images\SmallLogo.png">
-        <m2:SplashScreen Image="img\doge\04n.png" />
+      <m2:VisualElements DisplayName="doge weather" Description="doge weather is your go to guide for your local weather report, considering you are too lazy to look out a window!" ForegroundText="dark" BackgroundColor="#FFFFCC" Square150x150Logo="images\logo.png" Square30x30Logo="images\SmallLogo.png">
+        <m2:DefaultTile Square310x310Logo="images\square.png" Wide310x150Logo="images\wide.png" ShortName="doge weather" Square70x70Logo="images\logosmaller.png" DefaultSize="square150x150Logo">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+            <m2:ShowOn Tile="wide310x150Logo" />
+            <m2:ShowOn Tile="square310x310Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="images\splashscreen.png" BackgroundColor="#FFFFCC" />
       </m2:VisualElements>
     </Application>
   </Applications>

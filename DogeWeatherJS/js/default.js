@@ -17,9 +17,21 @@
     "use strict";
     var page = WinJS.UI.Pages.define("/default.html", {
         ready: function (element, options) {
-            //document.getElementById("launchUriWithWarningButton").addEventListener("click", launchUriWithWarning, false);
         }
     });
+    WinJS.Application.onsettings = function (e) {
+        e.detail.applicationcommands = {
+            "about": {
+                title: "About",
+                href: "/settings_about.html"
+            },
+            "privacy": {
+                title: "Privacy",
+                href: "/settings_privacy.html"
+            }
+        };
+        WinJS.UI.SettingsFlyout.populateSettings(e);
+    };
 
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
@@ -68,13 +80,13 @@
             console.log("Nothing Found");
             // Rate Me Data not found
             writeRateMeData("0"); //First time, well write a zero.
-            ShowMessage();
         }
         else {
             console.log(value);
             // Rate Me is contained in data
             if (value == "0") { //Second Time (Let's ask for review)
                 writeRateMeData("1");
+                ShowMessage();
             }
             else if (value == "1") { //Third Time (Already asked, don't ask again :C)
             }
