@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Such Weather</title>
+
+    <meta name="description" content="much weather wow temperature">
+    <meta name="author" content="Katia + Bennett" />
+    <link rel="shortcut icon" href="./img/doge/favicon.png" type="image/png">
+
+    <!--Adding Jquery references-->
+    <script src="/js/jquery-2.1.0.min.js"></script>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- DogeWeatherJS references -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+
+</head>
+<body class="bg">
+    <div id="browser_geo">
+        use my location
+    </div>
+    <div class="container">
+        <div class="doge-image"></div>
+        <div id="all-weather">
+            <div id="weather-desc"></div>
+            <div id="location"></div>
+            <div class="t" id="degreesCelsius"> <span class="number"></span><span class="cel"></span></div>
+            <div class="t" id="degreesFahrenheit"></div>
+        </div>
+    </div>
+    <div id="identifiers">
+        <div id="weather-id"></div>
+        <div id="weather-icon"> </div>
+    </div>
+    <div class="ourinfo">
+        wow <a href="https://github.com/katiaeirin/dogeweather" target="_blank">github</a> such <a href="http://dogeweather.com/" target="_blank">inspired</a>
+        <p> many thanks <a href="https://twitter.com/KatiaEirin" target="_blank">Katia</a> &amp; <a href="https://twitter.com/ennsu" target="_blank">Bennett</a></p>
+        <p> tiny port <a href="https://twitter.com/SilverFlameApps" target="_blank">SilverFlame Apps</a></p>
+        <p id="dogecoinbox">tip <span id="coinclick">dogecoins</span><div id="coinaddress"><small>dogecoin address: DD5z316BX6YMzj4ARp8opoMBf82hbZB7N5</small></div></p>
+    </div>
+    
+    <script src="/js/main.js"></script>
+    <script src="/js/jquery.dogeweather.js"></script>
+    <script>
+        $("#dogecoinbox").click(function () {
+            $("#coinaddress").toggle();
+        });
+    </script>
+</body>
+</html>

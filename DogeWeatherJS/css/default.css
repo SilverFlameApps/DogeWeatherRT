@@ -1,0 +1,125 @@
+﻿            body {
+                min-height:640px;
+				font-family:Comic Sans MS, Comic Sans, Chalkboard, Helvetica, Arial, sans-serif;
+            }
+            .bg {
+                background-color: #FFFFCC;
+                background-repeat:  no-repeat;
+                background-position: center center;
+                background-attachment: fixed; 
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            .container {
+                width:550px;
+                height:640px;
+                position:absolute;
+                top:50%;
+                left: 50%;
+                margin-left:-275px;
+                margin-top: -320px;
+            }
+            .doge-image {
+                width:550px;
+                height:550px;
+                background: url('/img/doge/doge-regular.png');
+                background-repeat: no-repeat;
+                /*background-attachment: fixed;*/
+                background-size: 550px 550px;
+            }
+            #all-weather {
+                height:90px;
+                position:relative;
+                top:-100px;
+                text-align: center;
+            }
+            #weather-desc {
+                font-size: 30px;
+                color:#33D6FF;
+				text-transform: lowercase;
+            }
+            #identifiers {
+                visibility:hidden;
+            }
+            #location {
+                color: #ff3399;
+            }
+            .t {
+                color: #30FFD6;
+                display: inline-block;
+            }
+            .suchlikes {
+                display:block;
+                padding: 10px;
+            }
+            .much-like {
+                display:inline-block;
+                padding:5px;
+            }
+            .ourinfo {
+                display:block;
+                position:absolute;
+                bottom:0;
+                right:0;
+                padding:0 10px 10px 0;
+                color: limegreen;
+                font-weight: 100;
+                font-size: 14px;
+                letter-spacing: 1px;
+				text-align:right;
+            }
+            .ourinfo p {
+                margin: 0;
+                padding-bottom:5em;
+                padding:0;
+            }
+            .ourinfo a {
+                text-decoration: none;
+                color:orange;
+                font-weight: bold;
+            }
+            .ourinfo a:hover {
+                color: cadetblue;
+            }
+
+			#dogecoinbox{
+			cursor:pointer;
+			}	
+
+			#coinclick{
+			color:orange;
+			cursor:pointer;
+            font-weight: bold;
+			}
+
+			#coinclick:hover{
+			color:cadetblue;
+			}
+
+			#coinaddress{
+			display:none;
+			clear:both;
+			}
+            #browser_geo {
+                cursor:pointer;
+                width:auto;
+                position:absolute;
+                font-size:16px;
+                top:0px;
+                padding:14px;
+                padding-left:42px;
+                right:0px;
+                text-align:right;
+                color: limegreen;
+                font-weight:500;
+                background-color:rgba(0,0,0,0.2);
+                background-image:url('/img/doge-geo.png');
+                background-position:0px 5px;
+                background-repeat: no-repeat;
+                background-size:38px 38px;
+            }
+            #browser_geo:hover {
+                color:cadetblue;
+            }
