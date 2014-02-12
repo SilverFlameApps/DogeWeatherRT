@@ -2,7 +2,6 @@ dogeweather rt
 ===========
 
 Such Weather
-
 Much Windows 8
 
 http://dogeweather.com
