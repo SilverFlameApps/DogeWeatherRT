@@ -1,4 +1,4 @@
-//getWeather("./weather.php");
+﻿//getWeather("./weather.php");
 getLocation();
 
 	   function getWeather(link) {

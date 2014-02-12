@@ -145,7 +145,6 @@
     <Content Include="js\jquery-2.1.0.min.js" />
     <Content Include="js\jquery.dogeweather.js" />
     <Content Include="js\main.js" />
-    <Content Include="js\vendor\jquery-1.9.0.min.js" />
     <Content Include="weather.php" />
     <None Include="DogeWeatherJS_TemporaryKey.pfx" />
   </ItemGroup>

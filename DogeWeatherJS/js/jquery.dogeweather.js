@@ -1,4 +1,4 @@
-//  wow
+﻿//  wow
 (function($) {
     //  such plugin
     $.doge = function(tings) {

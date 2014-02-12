@@ -349,14 +349,16 @@
     <Language Code="zu-za" InMinimumRequirementSet="false" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>10220SilverFlameApps.Pip-BoyRadio</MainPackageIdentityName>
+    <MainPackageIdentityName>10220SilverFlameApps.dogeweather</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>Pip-Boy Radio</ReservedName>
+      <ReservedName>doge weather</ReservedName>
+      <ReservedName>dogeweather</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
+    <MainPackageIdentityName>10220SilverFlameApps.Pip-BoyRadio</MainPackageIdentityName>
     <MainPackageIdentityName>10220SilverFlameApps.PokerNyhederneRT</MainPackageIdentityName>
     <MainPackageIdentityName>10220SilverFlameApps.TronTimeRT</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/40a19fde-355c-4113-af22-8ef6f7aba72a" />
+  <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/c55ea9d9-44d1-473e-8ed6-1101c93841fa" />
 </StoreAssociation>
