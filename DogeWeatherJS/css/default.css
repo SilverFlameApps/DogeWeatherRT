@@ -103,6 +103,16 @@
 			color:cadetblue;
 			}
 
+            .walletid{
+                color:orange;
+			    cursor:pointer;
+                font-weight: bold;
+            }
+
+            .walletid:hover{
+			color:cadetblue;
+			}
+
 			#coinaddress{
 			display:none;
 			clear:both;

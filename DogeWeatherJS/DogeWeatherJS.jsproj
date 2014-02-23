@@ -53,6 +53,7 @@
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>x86</AppxBundlePlatforms>
     <PackageCertificateThumbprint>20632ACDBCD4FF36EF58060C7571BC3DCE620F74</PackageCertificateThumbprint>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="package.appxmanifest">
@@ -60,6 +61,8 @@
     </AppxManifest>
     <None Include="Package.StoreAssociation.xml" />
     <None Include="DogeWeatherJS_StoreKey.pfx" />
+    <Content Include="livetilesettings.xml" />
+    <Content Include="settings_settings.html" />
     <Content Include="settings_privacy.html" />
     <Content Include="about.css" />
     <Content Include="settings_about.html" />
@@ -102,10 +105,7 @@
     <Content Include="img\doge\03d.png" />
     <Content Include="img\doge\03n.png" />
     <Content Include="img\doge\04d.png" />
-    <Content Include="img\doge\04n.scale-100.png" />
-    <Content Include="img\doge\04n.scale-140.png" />
-    <Content Include="img\doge\04n.scale-180.png" />
-    <Content Include="img\doge\09d %281%29.png" />
+    <Content Include="img\doge\04n.png" />
     <Content Include="img\doge\09d.png" />
     <Content Include="img\doge\09n.png" />
     <Content Include="img\doge\10d.png" />

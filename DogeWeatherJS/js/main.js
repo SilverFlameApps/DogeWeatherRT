@@ -41,7 +41,7 @@ getLocation();
 			$('#degreesCelsius .cel').text("°C ");
 			$('#degreesFahrenheit').text(Math.round(tempFahrenheit) + "°F");
 
-			$(".suchlikes").show();
+			//$(".suchlikes").show();
 			$(".ourinfo").show();
 
 			//initialise such doge
@@ -54,7 +54,7 @@ getLocation();
 	       if (text != "wow, located!") {
 	       getLocation();
 	        }
-        });
+	   });
 
 	   	function getLocation()
 			  {
@@ -63,7 +63,7 @@ getLocation();
 			    navigator.geolocation.getCurrentPosition(showPosition);
 			    }
 			  else
-			  	$("#browser_geo").text("Geolocation is not supported by this browser.");
+			  	$("#browser_geo").text("Geolocation is not supported by this pc.");
 			  }
 			function showPosition(position)
 			  {

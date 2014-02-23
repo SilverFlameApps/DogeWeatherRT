@@ -1,0 +1,31 @@
+﻿<!doctype html>
+  <!--Adding Jquery references-->
+<script src="/js/jquery-2.1.0.min.js"></script>
+
+<!-- WinJS references -->
+<link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<link href="/css/default.css" rel="stylesheet" />
+
+<html>
+<body>
+    <div style="border: 1px solid #AB00A5" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{settingsCommandId:'settings', width:'narrow'}">
+        <div class="win-ui-dark win-header" style="background-color: #E2E241;">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+            <div class="win-label"> Settings</div>
+            <img src="../images/logo.scale-100.png" style="position: absolute; right: 40px; width:35px; height:35px" />
+        </div>
+        <div class="win-content win-settings-section">
+            <h3>many settings!</h3>
+            <br />
+            <p> much app, very broken, no update?</p>
+            <p> little push, button good, much happy!</p>
+            <div id="browser_geo">
+                reset doge?
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

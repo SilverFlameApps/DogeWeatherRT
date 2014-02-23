@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <tile>
+    <visual>
+      <binding template="TileSquareImage">
+        <image id="1" src="image1" alt="alt text"/>
+      </binding>  
+    </visual>
+  </tile>
+
+  <tile>
+    <visual version="2">
+      <binding template="TileSquare150x150Image" fallback="TileSquareImage">
+        <image id="1" src="image1" alt="alt text"/>
+      </binding>  
+    </visual>
+  </tile>
+
+  <tile>
+    <visual>
+      <binding template="TileWideImage">
+        <image id="1" src="image1.png" alt="alt text"/>
+      </binding>  
+    </visual>
+  </tile>
+
+  <tile>
+    <visual version="2">
+      <binding template="TileWide310x150SmallImageAndText02" fallback="TileWideImage">
+        <image id="1" src="image1.png" alt="alt text"/>
+        <text id="1">Text Field 1 (larger text)</text>
+        <text id="2">Text Field 2</text>
+        <text id="3">Text Field 3</text>
+        <text id="4">Text Field 4</text>
+        <text id="5">Text Field 5</text>
+      </binding>  
+    </visual>
+  </tile>
+
+  <tile>
+    <visual version="2">
+      <binding template="TileSquare310x310BlockAndText02">
+        <image id="1" src="image1.png" alt="alt text"/>
+        <text id="1">Text Field 1 (block text)</text>
+        <text id="2">Text Field 2 (larger text)</text>
+        <text id="3">Text Field 3 (larger text)</text>
+      </binding>  
+    </visual>
+  </tile>
+
+</root>

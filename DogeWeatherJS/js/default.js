@@ -28,14 +28,20 @@
             "privacy": {
                 title: "Privacy",
                 href: "/settings_privacy.html"
-            }
+            },
+            //"settings": {
+            //    title: "Settings",
+            //    href: "/settings_settings.html"
+            //}
         };
         WinJS.UI.SettingsFlyout.populateSettings(e);
     };
 
     var app = WinJS.Application;
     var activation = Windows.ApplicationModel.Activation;
-    var uriToLaunch = "ms-windows-store:REVIEW?PFN=[f9962804-4ab7-4d9d-9a08-9b303ba2b251]"; //Edit for your Application!
+
+    var familyName = Windows.ApplicationModel.Package.current.id.familyName;
+    var uriToLaunch = "ms-windows-store:REVIEW?PFN=" + familyName; //Edit for your Application!
 
     var applicationData = Windows.Storage.ApplicationData.current;
     var localSettings = applicationData.localSettings;
@@ -46,6 +52,9 @@
 
         //Test Rating
         //ShowMessage();
+
+        //Testing Live Tile Support
+        //liveTileSetup();
     }
 
     app.onactivated = function (args) {
@@ -110,6 +119,52 @@
                     WinJS.log && WinJS.log("URI launch failed.", "sample", "error");
                 }
             });
+    }
+
+    function liveTileSetup() {
+        var notifications = Windows.UI.Notifications;
+
+        var template = notifications.TileTemplateType.tileWide310x150Image;
+        //var template = "livetilesettings.xml";
+
+        var tileXml = notifications.TileUpdateManager.getTemplateContent(template);
+        var imageFile = "13n.png";
+
+        var image = tileXml.selectSingleNode('//image[@id="1"]');
+        image.setAttribute('src', 'ms-appx:///img/doge/' + imageFile);
+        image.setAttribute('alt', 'Live Tile');
+
+        var bindingElement = tileXml.selectSingleNode('//binding');
+        bindingElement.setAttribute('branding', 'name');
+
+        var squareTemplate = notifications.TileTemplateType.tileSquare150x150Image;
+        var squareTileXml = notifications.TileUpdateManager.getTemplateContent(squareTemplate);
+        var squareImage = squareTileXml.selectSingleNode('//image[@id="1"]');
+        squareImage.setAttribute('src', 'ms-appx:///img/doge/' + imageFile);
+        squareImage.setAttribute('alt', 'Live Tile');
+        bindingElement = squareTileXml.selectSingleNode('//binding');
+        bindingElement.setAttribute('branding', 'name');
+
+        var bigTemplate = notifications.TileTemplateType.tileSquare310x310BlockAndText02;
+        var bigTileXml = notifications.TileUpdateManager.getTemplateContent(bigTemplate);
+        var bigTileTextAttributes = bigTileXml.selectSingleNode("//text[@id='1']");
+        bigTileTextAttributes.appendChild(bigTileXml.createTextNode("wow"));
+        bigTileTextAttributes = bigTileXml.selectSingleNode("//text[@id='2']");
+        bigTileTextAttributes.appendChild(bigTileXml.createTextNode("Copenhagen"));
+        bigTileTextAttributes = bigTileXml.selectSingleNode("//text[@id='3']");
+        bigTileTextAttributes.appendChild(bigTileXml.createTextNode("4C / 43F"));
+        var bigImage = bigTileXml.selectSingleNode('//image[@id="1"]');
+        bigImage.setAttribute('src', 'ms-appx:///img/doge/' + imageFile);
+        bindingElement = bigTileXml.selectSingleNode('//binding');
+        bindingElement.setAttribute('branding', 'name');
+
+        var node = tileXml.importNode(squareTileXml.selectSingleNode('//binding'), true);
+        tileXml.selectSingleNode('//visual').appendChild(node);
+        node = tileXml.importNode(bigTileXml.selectSingleNode('//binding'), true);
+        tileXml.selectSingleNode('//visual').appendChild(node);
+
+        var tileNotification = new notifications.TileNotification(tileXml);
+        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
     }
 
     app.oncheckpoint = function (args) {

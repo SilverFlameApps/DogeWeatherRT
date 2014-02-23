@@ -193,21 +193,21 @@
         
         var very = doge.append('<div class="such overlay" />').children('.such.overlay').css({
             position: 'fixed',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
+            left: 50,
+            right: 50,
+            top: 50,
+            bottom: 50,
             pointerEvents: 'none'
         });
      
         interval = setInterval(function() {
             
             $('.such.overlay').append(
-                '<span style="position: absolute; left: ' + Math.random()  *90 + '%;top: ' + Math.random()  *90 + '%;font-size: ' + Math.max(20, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';">'
+                '<span style="position: absolute; left: ' + Math.random()  *90 + '%;top: ' + Math.random()  *90 + '%;font-size: ' + Math.max(30, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';">'
                     + r(dogefix) +
                 '</span>');
                 var suchnumber = $("span").length;
-                if (suchnumber > 8 )
+                if (suchnumber > 10 )
                 {
                     $('.such span:nth-child(1)').remove();
                 }

@@ -42,15 +42,36 @@
         wow <a href="https://github.com/SilverFlameApps/DogeWeatherRT" target="_blank">github</a> much <a href="http://drakeweather.com/" target="_blank">inspired</a>
         <p> many thanks <a href="https://twitter.com/KatiaEirin" target="_blank">katia</a> &amp; <a href="https://twitter.com/ennsu" target="_blank">bennett</a></p>
         <p> such port <a href="https://twitter.com/SilverFlameApps" target="_blank">silverflame apps</a></p>
-        <p id="dogecoinbox">tip <span id="coinclick">dogecoins</span><div id="coinaddress"><small>dogecoin address: DD5z316BX6YMzj4ARp8opoMBf82hbZB7N5</small></div></p>
+        <p id="dogecoinbox">tip <span id="coinclick">dogecoins</span>
+        <div id="coinaddress">dogecoin katia: <span class="walletid">DD5z316BX6YMzj4ARp8opoMBf82hbZB7N5</span> <br />
+        dogecoin silverflame: <span class ="walletid">DAw5y2tvZFs3oXg5fA9gm7DyuYEyiV6reG</span>
+        </div></p>
+        <p id="hideme">much copy, very in clipboard</p>
     </div>
     
     <script src="/js/main.js"></script>
     <script src="/js/jquery.dogeweather.js"></script>
     <script>
+        $("#hideme").toggle();
         $("#dogecoinbox").click(function () {
             $("#coinaddress").toggle();
         });
+        $(".walletid").click(function () {
+            var text = $(".walletid").text();
+
+            var _clipboard = Windows.ApplicationModel.DataTransfer.Clipboard,
+            _dataTransfer = Windows.ApplicationModel.DataTransfer;
+
+            var dataPackage = new _dataTransfer.DataPackage();
+            dataPackage.setText(text);
+
+            _clipboard.setContent(dataPackage);
+            $("#coinaddress").toggle();
+
+            $("#hideme").fadeToggle(800, function () {
+                $("#hideme").fadeToggle(1600, "swing");
+            }).delay(800);
+        })
     </script>
 </body>
 </html>

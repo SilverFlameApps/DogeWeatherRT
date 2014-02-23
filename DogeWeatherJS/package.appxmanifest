@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="10220SilverFlameApps.dogeweather" Version="1.1.0.2" Publisher="CN=5E6BED2A-A2C2-4633-BD8F-FE32CEDC02AC" />
+  <Identity Name="10220SilverFlameApps.dogeweather" Version="1.1.0.4" Publisher="CN=5E6BED2A-A2C2-4633-BD8F-FE32CEDC02AC" />
   <Properties>
     <DisplayName>doge weather</DisplayName>
     <PublisherDisplayName>SilverFlame Apps</PublisherDisplayName>
