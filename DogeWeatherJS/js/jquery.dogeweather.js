@@ -200,10 +200,12 @@
             pointerEvents: 'none'
         });
      
+        //clearInterval(interval);
         interval = setInterval(function() {
             
             $('.such.overlay').append(
-                '<span style="position: absolute; left: ' + Math.random()  *90 + '%;top: ' + Math.random()  *90 + '%;font-size: ' + Math.max(30, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';">'
+                '<span style="position: absolute; left: ' + Math.random() * 90 + '%;top: ' + Math.random() * 90 + 
+                '%;font-size: ' + Math.max(30, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';text-shadow: 0px 0px 5px Black; ">'
                     + r(dogefix) +
                 '</span>');
                 var suchnumber = $("span").length;
@@ -212,6 +214,8 @@
                     $('.such span:nth-child(1)').remove();
                 }
         }, 2300);
+
+        //$("#home").
 
         $("#browser_geo" ).one('click', function(){
             console.log('clear');

@@ -46,13 +46,14 @@
             }
             #location {
                 color: #ff3399;
-                font-size:22px;
+                font-size:24px;
+                font-weight:600;
                 text-transform: lowercase;
             }
             .t {
                 color: #30FFD6;
                 font-size:20px;
-                font-weight:500;
+                font-weight:600;
                 display: inline-block;
             }
             .suchlikes {

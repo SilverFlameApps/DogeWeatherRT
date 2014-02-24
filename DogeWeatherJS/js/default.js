@@ -19,6 +19,10 @@
         ready: function (element, options) {
         }
     });
+
+    WinJS.Application.checkpoint = function (e) {
+        WinJS.Application.stop();
+    }
     WinJS.Application.onsettings = function (e) {
         e.detail.applicationcommands = {
             "about": {
@@ -46,6 +50,17 @@
     var applicationData = Windows.Storage.ApplicationData.current;
     var localSettings = applicationData.localSettings;
     var localFolder = applicationData.localFolder;
+
+    app.oncheckpoint = function (args) {
+        // TODO: This application is about to be suspended. Save any state
+        // that needs to persist across suspensions here. You might use the
+        // WinJS.Application.sessionState object, which is automatically
+        // saved and restored across suspension. If you need to complete an
+        // asynchronous operation before your application is suspended, call
+        // args.setPromise().
+        WinJS.Application.stop();
+        window.close();
+    };
 
     app.onready = function () {
         readRateMeData();
@@ -166,15 +181,6 @@
         var tileNotification = new notifications.TileNotification(tileXml);
         notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
     }
-
-    app.oncheckpoint = function (args) {
-        // TODO: This application is about to be suspended. Save any state
-        // that needs to persist across suspensions here. You might use the
-        // WinJS.Application.sessionState object, which is automatically
-        // saved and restored across suspension. If you need to complete an
-        // asynchronous operation before your application is suspended, call
-        // args.setPromise().
-    };
 
     app.start();
 })();

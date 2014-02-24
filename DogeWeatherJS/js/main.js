@@ -1,5 +1,6 @@
 ﻿//getWeather("./weather.php");
 getLocation();
+var dogePlugin = $($.doge);
 
 	   function getWeather(link) {
 	       jQuery.support.cors = true;
@@ -44,8 +45,9 @@ getLocation();
 			//$(".suchlikes").show();
 			$(".ourinfo").show();
 
-			//initialise such doge
-			$($.doge);
+	        //initialise such doge
+            $($.doge);
+               
 		});
 	   }
 
@@ -55,6 +57,15 @@ getLocation();
 	       getLocation();
 	        }
 	   });
+
+	   setInterval(function () {
+           //Click browser_geo to clear the interval running in .doge
+	       $("#browser_geo").click();
+	       console.log('update');
+           //Update location
+	       getLocation();
+	   },
+       60000);
 
 	   	function getLocation()
 			  {
@@ -68,10 +79,18 @@ getLocation();
 			function showPosition(position)
 			  {
 			  //$("#browser_geo").text("Latitude: " + position.coords.latitude + 
-			  //"Longitude: " + position.coords.longitude);
+			    //"Longitude: " + position.coords.longitude);
+
+                //Test Data
+			    //var number = 1 + Math.floor(Math.random() * 10);
+			    //var xTest = 34.5678520 + number;
+			    //var yTest = -105.2256775 - number;
 
 			  	var url = 'http://api.openweathermap.org/data/2.5/weather';
 			  	url += '?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '?format=json';
+
+			    //test url
+			  	//url += '?lat=' + xTest.toString() + '&lon=' + yTest.toString() + '?format=json';
 
                 getWeather(url);
                 $("#browser_geo").text("wow, located!").css("cursor", "auto").css("color", "#B66DFF"); 
