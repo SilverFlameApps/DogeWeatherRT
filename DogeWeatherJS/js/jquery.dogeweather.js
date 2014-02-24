@@ -1,9 +1,20 @@
-﻿//  wow
+﻿// much reload, much sad, no add same div!
+var doge = $('body').css('font-family', 'Comic Sans MS, Comic Sans, Chalkboard, Helvetica, Arial, sans-serif');
+var very = doge.append('<div class="such overlay" />').children('.such.overlay').css({
+    position: 'fixed',
+    left: 50,
+    right: 50,
+    top: 50,
+    bottom: 50,
+    pointerEvents: 'none'
+});
+
+//  wow
 (function($) {
     //  such plugin
     $.doge = function(tings) {
         //  very jquery
-        var doge = $('body').css('font-family', 'Comic Sans MS, Comic Sans, Chalkboard, Helvetica, Arial, sans-serif');
+        
 
         var suchcolors = [ 
             "#0066FF", "#FF3399", "#33CC33", "#FFFF99", "#FFFF75", "#8533FF", 
@@ -191,18 +202,8 @@
             'wow'
         ];
         
-        var very = doge.append('<div class="such overlay" />').children('.such.overlay').css({
-            position: 'fixed',
-            left: 50,
-            right: 50,
-            top: 50,
-            bottom: 50,
-            pointerEvents: 'none'
-        });
-     
-        //clearInterval(interval);
         interval = setInterval(function() {
-            
+            //Adding much text
             $('.such.overlay').append(
                 '<span style="position: absolute; left: ' + Math.random() * 90 + '%;top: ' + Math.random() * 90 + 
                 '%;font-size: ' + Math.max(30, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';text-shadow: 0px 0px 5px Black; ">'
@@ -214,8 +215,6 @@
                     $('.such span:nth-child(1)').remove();
                 }
         }, 2300);
-
-        //$("#home").
 
         $("#browser_geo" ).one('click', function(){
             console.log('clear');

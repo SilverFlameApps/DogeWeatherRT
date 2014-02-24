@@ -53,9 +53,9 @@ var dogePlugin = $($.doge);
 
 	   $("#browser_geo").on('click', function () {
 	       var text = $("#browser_geo").text();
-	       if (text != "wow, located!") {
+	       //if (text != "wow, located!") {
 	       getLocation();
-	        }
+	        //}
 	   });
 
 	   setInterval(function () {
@@ -83,8 +83,8 @@ var dogePlugin = $($.doge);
 
                 //Test Data
 			    //var number = 1 + Math.floor(Math.random() * 10);
-			    //var xTest = 34.5678520 + number;
-			    //var yTest = -105.2256775 - number;
+			    //var xTest = -21.1493069 + number;
+			    //var yTest = 149.1875982 - number;
 
 			  	var url = 'http://api.openweathermap.org/data/2.5/weather';
 			  	url += '?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '?format=json';
