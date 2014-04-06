@@ -1,5 +1,10 @@
 ﻿//getWeather("./weather.php");
-getLocation();
+WinJS.Namespace.define("DogeWeather", {
+    secondFunction: function () { getLocation(); }
+});
+
+function b() { getLocation(); }
+
 var dogePlugin = $($.doge);
 
 	   function getWeather(link) {
@@ -33,7 +38,7 @@ var dogePlugin = $($.doge);
 			//get weather description
 			var tempCelcius = obj.main.temp - 273.15;
 			var tempFahrenheit = tempCelcius * 9 / 5 + 32;
-			var description = obj.weather[0].description;
+			var description = obj.weather[0].description
 
 			$('#weather-desc').text("wow " + description);
 			$('#location').text(obj.name);
@@ -54,7 +59,7 @@ var dogePlugin = $($.doge);
 	   $("#browser_geo").on('click', function () {
 	       var text = $("#browser_geo").text();
 	       //if (text != "wow, located!") {
-	       getLocation();
+	        getLocation();
 	        //}
 	   });
 

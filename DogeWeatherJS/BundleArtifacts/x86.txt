@@ -1,3 +1,4 @@
-MainPackage=C:\Users\Christian\Documents\Visual Studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\bin\x86\Release\DogeWeatherJS_1.1.0.6_Bundle\DogeWeatherJS_1.1.0.6_x86.appx
-ResourcePack=C:\Users\Christian\Documents\Visual Studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\bin\x86\Release\DogeWeatherJS_1.1.0.6_Bundle\DogeWeatherJS_1.1.0.6_scale-140.appx
-ResourcePack=C:\Users\Christian\Documents\Visual Studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\bin\x86\Release\DogeWeatherJS_1.1.0.6_Bundle\DogeWeatherJS_1.1.0.6_scale-180.appx
+MainPackage=C:\Users\Christian\documents\visual studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\bin\x86\Release\DogeWeatherJS_1.1.0.18_Bundle\DogeWeatherJS_1.1.0.18_x86.appx
+SymbolPackage=C:\Users\Christian\documents\visual studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\AppPackages\DogeWeatherJS_1.1.0.18_Test\DogeWeatherJS_1.1.0.18_x86.appxsym
+ResourcePack=C:\Users\Christian\documents\visual studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\bin\x86\Release\DogeWeatherJS_1.1.0.18_Bundle\DogeWeatherJS_1.1.0.18_scale-140.appx
+ResourcePack=C:\Users\Christian\documents\visual studio 2013\Projects\DogeWeatherJS\DogeWeatherJS\bin\x86\Release\DogeWeatherJS_1.1.0.18_Bundle\DogeWeatherJS_1.1.0.18_scale-180.appx

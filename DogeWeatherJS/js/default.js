@@ -45,11 +45,17 @@
     var activation = Windows.ApplicationModel.Activation;
 
     var familyName = Windows.ApplicationModel.Package.current.id.familyName;
-    var uriToLaunch = "ms-windows-store:REVIEW?PFN=" + familyName; //Edit for your Application!
+    var uriToLaunch = "ms-windows-store:REVIEW?PFN=" + familyName;
 
     var applicationData = Windows.Storage.ApplicationData.current;
     var localSettings = applicationData.localSettings;
     var localFolder = applicationData.localFolder;
+
+    var entryPoint = "backgroundtask.js";
+    var taskName = "UpdateTile";
+
+    var conditionType = Windows.ApplicationModel.Background.SystemConditionType.internetAvailable;
+    var taskCondition = new Windows.ApplicationModel.Background.SystemCondition(conditionType);
 
     app.oncheckpoint = function (args) {
         // TODO: This application is about to be suspended. Save any state
@@ -61,6 +67,11 @@
         WinJS.Application.stop();
         window.close();
     };
+
+    function a() { b(); }
+    app.onloaded = function () {
+        a();
+    }
 
     app.onready = function () {
         readRateMeData();
@@ -93,6 +104,97 @@
         msgpopup.showAsync();
     }
 
+    //
+    // Register a background task with the specified taskEntryPoint, name, trigger,
+    // and condition (optional).
+    //
+    // taskEntryPoint: Task entry point for the background task.
+    // taskName: A name for the background task.
+    // trigger: The trigger for the background task.
+    // condition: Optional parameter. A conditional event that must be true for the task to fire.
+    //
+    function RegisterBackgroundTask(taskEntryPoint,
+                                    taskName,
+                                    trigger,
+                                    condition) {
+        //
+        // Check for existing registrations of this background task.
+        //
+
+        var taskRegistered = false;
+
+        var background = Windows.ApplicationModel.Background;
+
+
+            var iter = background.BackgroundTaskRegistration.allTasks.first();
+            var hascur = iter.hasCurrent;
+
+            while (hascur) {
+                var cur = iter.current.value;
+
+                if (cur.name === taskName) {
+                    taskRegistered = true;
+                    break;
+                }
+
+                hascur = iter.moveNext();
+            }
+
+            if (taskRegistered == true) {
+
+                return iter.current;
+            }
+
+            var builder = new Windows.ApplicationModel.Background.BackgroundTaskBuilder();
+
+            builder.name = taskName;
+            builder.taskEntryPoint = taskEntryPoint;
+            builder.setTrigger(trigger);
+
+            if (condition !== null) {
+                builder.addCondition(condition);
+
+                //
+                // If the condition changes while the background task is executing then it will
+                // be canceled.
+                //
+                builder.cancelOnConditionLoss = true;
+            }
+
+            var task = builder.register();
+       
+    }
+
+    function requestLockScreenAccess() {
+        var Background = Windows.ApplicationModel.Background;
+
+        //
+        // An app can call the add or query API as many times as it wants; however, it will only present the dialog box to the user one time.
+        //
+        Background.BackgroundExecutionManager.requestAccessAsync().then(function (result) {
+            switch (result) {
+                case Background.BackgroundAccessStatus.denied:
+                    displayStatus("This app is not on the lock screen.");
+                    break;
+
+                case Background.BackgroundAccessStatus.allowedWithRealTimeConnectivity:
+                    displayStatus("This app is on the lock screen and has access to Real Time Connectivity.");
+                    break;
+
+                case Background.BackgroundAccessStatus.allowedWithoutRealTimeConnectivity:
+                    displayStatus("This app is on the lock screen, but does not have access to Real Time Connectivity.");
+                    break;
+
+                case Background.BackgroundAccessStatus.unspecified:
+                    displayStatus("The user has not yet taken any action. This is the default setting and the app is not on the lock screen.");
+                    break;
+            }
+        }, function (e) {
+            displayStatus(e);
+            console.log(e);
+        });
+    }
+
     function writeRateMeData(text) {
         localSettings.values["RateMe"] = text;
     }
@@ -114,6 +216,13 @@
             }
             else if (value == "1") { //Third Time (Already asked, don't ask again :C)
             }
+
+            //BECAUSE FUCK YOU, Thats why, it breaks on the first time opening the app! :C
+            requestLockScreenAccess();
+            RegisterBackgroundTask(entryPoint,
+                                                        taskName,
+                                                        new Windows.ApplicationModel.Background.TimeTrigger(30, false),
+                                                        taskCondition);
         }
     }
 
@@ -136,51 +245,9 @@
             });
     }
 
-    function liveTileSetup() {
-        var notifications = Windows.UI.Notifications;
-
-        var template = notifications.TileTemplateType.tileWide310x150Image;
-        //var template = "livetilesettings.xml";
-
-        var tileXml = notifications.TileUpdateManager.getTemplateContent(template);
-        var imageFile = "13n.png";
-
-        var image = tileXml.selectSingleNode('//image[@id="1"]');
-        image.setAttribute('src', 'ms-appx:///img/doge/' + imageFile);
-        image.setAttribute('alt', 'Live Tile');
-
-        var bindingElement = tileXml.selectSingleNode('//binding');
-        bindingElement.setAttribute('branding', 'name');
-
-        var squareTemplate = notifications.TileTemplateType.tileSquare150x150Image;
-        var squareTileXml = notifications.TileUpdateManager.getTemplateContent(squareTemplate);
-        var squareImage = squareTileXml.selectSingleNode('//image[@id="1"]');
-        squareImage.setAttribute('src', 'ms-appx:///img/doge/' + imageFile);
-        squareImage.setAttribute('alt', 'Live Tile');
-        bindingElement = squareTileXml.selectSingleNode('//binding');
-        bindingElement.setAttribute('branding', 'name');
-
-        var bigTemplate = notifications.TileTemplateType.tileSquare310x310BlockAndText02;
-        var bigTileXml = notifications.TileUpdateManager.getTemplateContent(bigTemplate);
-        var bigTileTextAttributes = bigTileXml.selectSingleNode("//text[@id='1']");
-        bigTileTextAttributes.appendChild(bigTileXml.createTextNode("wow"));
-        bigTileTextAttributes = bigTileXml.selectSingleNode("//text[@id='2']");
-        bigTileTextAttributes.appendChild(bigTileXml.createTextNode("Copenhagen"));
-        bigTileTextAttributes = bigTileXml.selectSingleNode("//text[@id='3']");
-        bigTileTextAttributes.appendChild(bigTileXml.createTextNode("4C / 43F"));
-        var bigImage = bigTileXml.selectSingleNode('//image[@id="1"]');
-        bigImage.setAttribute('src', 'ms-appx:///img/doge/' + imageFile);
-        bindingElement = bigTileXml.selectSingleNode('//binding');
-        bindingElement.setAttribute('branding', 'name');
-
-        var node = tileXml.importNode(squareTileXml.selectSingleNode('//binding'), true);
-        tileXml.selectSingleNode('//visual').appendChild(node);
-        node = tileXml.importNode(bigTileXml.selectSingleNode('//binding'), true);
-        tileXml.selectSingleNode('//visual').appendChild(node);
-
-        var tileNotification = new notifications.TileNotification(tileXml);
-        notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
-    }
+    WinJS.Namespace.define("DogeWeather", {
+        firstFunction: function () { MyNamespace.secondFunction(); }
+    });
 
     app.start();
 })();

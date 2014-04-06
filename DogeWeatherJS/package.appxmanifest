@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="10220SilverFlameApps.dogeweather" Version="1.1.0.6" Publisher="CN=5E6BED2A-A2C2-4633-BD8F-FE32CEDC02AC" />
+  <Identity Name="10220SilverFlameApps.dogeweather" Version="1.1.0.18" Publisher="CN=5E6BED2A-A2C2-4633-BD8F-FE32CEDC02AC" />
   <Properties>
     <DisplayName>doge weather</DisplayName>
     <PublisherDisplayName>SilverFlame Apps</PublisherDisplayName>
@@ -16,6 +16,7 @@
   <Applications>
     <Application Id="App" StartPage="default.html">
       <m2:VisualElements DisplayName="doge weather" Description="doge weather is your go to guide for your local weather report, considering you are too lazy to look out a window!" ForegroundText="dark" BackgroundColor="#FFFFCC" Square150x150Logo="images\logo.png" Square30x30Logo="images\SmallLogo.png">
+        <m2:LockScreen Notification="badge" BadgeLogo="images\badge.png" />
         <m2:DefaultTile Square310x310Logo="images\square.png" Wide310x150Logo="images\wide.png" ShortName="doge weather" Square70x70Logo="images\logosmaller.png" DefaultSize="square150x150Logo">
           <m2:ShowNameOnTiles>
             <m2:ShowOn Tile="square150x150Logo" />
@@ -25,6 +26,14 @@
         </m2:DefaultTile>
         <m2:SplashScreen Image="images\splashscreen.png" BackgroundColor="#FFFFCC" />
       </m2:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" StartPage="backgroundtask.js">
+          <BackgroundTasks>
+            <Task Type="timer" />
+            <m2:Task Type="location" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   <Capabilities>
