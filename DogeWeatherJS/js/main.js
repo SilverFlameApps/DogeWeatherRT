@@ -11,9 +11,6 @@ var dogePlugin = $($.doge);
 	       jQuery.support.cors = true;
 
 	       WinJS.xhr({ url: link }).then(function (data) {
-	   		//$.getJSON(link, function(data){
-
-			//console.log(data);
 
 			var obj = jQuery.parseJSON(data.responseText);
 

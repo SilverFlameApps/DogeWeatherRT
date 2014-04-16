@@ -2,6 +2,8 @@
 //Checks for new events and notifies user.
 //Updates tiles
 
+//Do note that I have ZERO experience with jQuery, so this code is proberly 100% stupid.
+
 (function () {
     "use strict";
 
@@ -22,6 +24,9 @@
     var applicationData = Windows.Storage.ApplicationData.current;
     var localFolder = applicationData.localFolder;
 
+    //So in C# .NET 4.5 we have the option to await the service call.
+    //I didn't find any such option here, so i just wait a simi approtiate time interval before updating the tiles.
+    //Worst case senario, they get updated the next time it runs!
     var promise3 = new WinJS.Promise(function (complete) {
         promise = geolocator.getGeopositionAsync();
         promise.then(
@@ -39,8 +44,6 @@
                 settings.values["Status"] = err.message;
 
                 backgroundTaskInstance.succeeded = false;
-
-                // A JavaScript background task must call close when it is done 
                 close();
             }
         );
@@ -59,28 +62,16 @@
     function saveFile(num, ibuffer) {
         localFolder.createFileAsync(num + "title.jpg", Windows.Storage.CreationCollisionOption.replaceExisting)
                           .then(function (sampleFile) {
-                              //var formatter = new Windows.Globalization.DateTimeFormatting.DateTimeFormatter("longtime");
-                              //var timestamp = formatter.format(new Date());
                               var data = sampleFile;
                               var memoryStream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
                               var dataWriter = new Windows.Storage.Streams.DataWriter(memoryStream);
                               dataWriter.writeBuffer(ibuffer);
                               var buffer = dataWriter.detachBuffer();
                               dataWriter.close();
-                              //return Windows.Storage.FileIO.writeTextAsync(sampleFile, timestamp);
                               var file = Windows.Storage.FileIO.writeBufferAsync(data, buffer).done(function () {
-                                  //overint++;
-                                  console.log('clear');
-                                  console.log('Running Man')
-                                  
-                                  console.log(num);
 
-                                  WinJS.Utilities.startLog({ type: "info", tags: "custom" });
-                                  WinJS.log(num, "info", "custom");
-                                  //if (num == "4") {
-                                  //    backgroundTaskInstance.succeeded = true;
-                                  //    displayTileNotification();
-                                  //}
+                                  console.log('running doge')
+                                  console.log(num);
                               });
 
 
@@ -88,6 +79,8 @@
                           })
     }
 
+    //Calling my service here, code is not included in project... might be later though, its kinda awesome and kinda beyond fucking retarded!
+    //We call a RESTful WCF Service, it returns a Base64 incoded image, we do this 3 times for all 3 sizes... perhaps upgrade it to an array of base64's?
     function downloadFile(pos, num) {
         var json = "{\"lon\":" + (pos.coordinate.longitude).toString() + ",\"lan\":" + (pos.coordinate.latitude).toString() + ",\"version\":" + num + "}";
         return new WinJS.xhr({
@@ -97,29 +90,19 @@
             data: json
         }).then(function complete(request) {
             var stList = JSON.parse(request.responseText);
-            //var data = request.response;
-            //var fileStream = new Windows.Storage.Streams.InMemoryRandomAccessStream();
-            //var jpgencoderId = Windows.Graphics.Imaging.BitmapEncoder.jpegEncoderId;
+           
             var iBuffer = Windows.Security.Cryptography.CryptographicBuffer.decodeFromBase64String(stList);
             saveFile(num, iBuffer)
 
-            //var bitmapDecoder = Windows.Graphics.Imaging.BitmapDecoder;
-            //fileStream.writeAsync(iBuffer)
-            //var stuff = Windows.Graphics.Imaging.BitmapEncoder.createForTranscodingAsync(fileStream, bitmapDecoder.jpegDecoderId);
-
         }, function error(er) {
             var err = er.responseText;
-
             backgroundTaskInstance.succeeded = false;
-
-            // A JavaScript background task must call close when it is done 
             close();
         });
     }
 
     function displayTileNotification() {
         var path = "ms-appdata:///local/";
-        // get a filled in version of the template by using getTemplateContent
         var tileXml = notifications.TileUpdateManager.getTemplateContent(notifications.TileTemplateType.tileSquare150x150Image);
 
         // get the text attributes for this template and fill them in
@@ -130,7 +113,6 @@
 
         var tileXml2 = notifications.TileUpdateManager.getTemplateContent(notifications.TileTemplateType.tileWide310x150Image);
 
-        // get the text attributes for this template and fill them in
         var tileAttributes2 = tileXml2.selectSingleNode('//image[@id="1"]');
         tileAttributes2.setAttribute('src', path + "3title.jpg");
         var bindingElement2 = tileXml2.selectSingleNode('//binding');
@@ -138,7 +120,6 @@
 
         var tileXml3 = notifications.TileUpdateManager.getTemplateContent(notifications.TileTemplateType.tileSquare310x310Image);
 
-        // get the text attributes for this template and fill them in
         var tileAttributes3 = tileXml3.selectSingleNode('//image[@id="1"]');
         tileAttributes3.setAttribute('src', path + "2title.jpg");
         var bindingElement3 = tileXml3.selectSingleNode('//binding');
@@ -153,7 +134,6 @@
         var tileNotification = new notifications.TileNotification(tileXml);
 
         // send the notification to the app's default tile
-        //notifications.TileUpdateManager.createTileUpdaterForSecondaryTile("id").update(tileNotification);
         notifications.TileUpdateManager.createTileUpdaterForApplication().clear();
         notifications.TileUpdateManager.createTileUpdaterForApplication().update(tileNotification);
         close();

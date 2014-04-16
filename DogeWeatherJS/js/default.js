@@ -217,7 +217,8 @@
             else if (value == "1") { //Third Time (Already asked, don't ask again :C)
             }
 
-            //BECAUSE FUCK YOU, Thats why, it breaks on the first time opening the app! :C
+            //Why? BECAUSE FUCK YOU, Thats why, it breaks on the first time opening the app! 
+            //And I just couldn't figure out how to please it, I tried throwing sushi at the code, such mess!
             requestLockScreenAccess();
             RegisterBackgroundTask(entryPoint,
                                                         taskName,
